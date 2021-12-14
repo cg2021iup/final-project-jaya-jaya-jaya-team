@@ -8,7 +8,7 @@
 /**
  * @class - Controller class for handling all Controller input
  */
-class Controller {
+ class Controller {
     constructor() {
 
         this.keyCodes = [];

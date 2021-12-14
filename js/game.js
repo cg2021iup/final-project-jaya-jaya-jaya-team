@@ -77,11 +77,34 @@ let clock = new THREE.Clock(true);
 ///    ////    ////
 //    ////    ////
 
+/**
+ * Food
+ */
+ let food = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshLambertMaterial({
+        color: 0xff0000
+    })
+);
+scene.add(food);
+food.castShadow = true;
+
+let foodLight = new THREE.PointLight(0xff0000, 1, 20);
+scene.add(foodLight);
+
 ////    ////    ////
 ///    ////    ////
 //    ////    ////
 function setup() {
-    
+    spawnfood();
+}
+
+function spawnfood() {
+    food.position.x = Math.round(Math.random() * world.width - world.width / 2);
+    food.position.y = Math.round(Math.random() * world.height - world.height / 2);
+
+    foodLight.position.set(food.position.x, food.position.y, 3);
+
 }
 
 
