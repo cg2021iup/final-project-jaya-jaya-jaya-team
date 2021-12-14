@@ -106,7 +106,7 @@ git push -u origin master
 
 ## Steps:
 
-### 1. Creating the board, a still snake, some lighting, and the skeleton
+### 1 Creating the board, a still snake, some lighting, and the skeleton
 
 ### Board
 
@@ -436,7 +436,7 @@ gameLoop();
 ////////////////////////////////////
 ```
 
-### 2. Making the snake move by using arrow keys to change the snake’s direction
+### 2 Making the snake move by using arrow keys to change the snake’s direction
 
 game.js
 ```
@@ -651,7 +651,7 @@ onkeydown = onkeyup = function (e) {
 }
 ```
 
-### 3. Spawning food 
+### 3 Spawning food 
 
 game.js
 ```
