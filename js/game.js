@@ -45,10 +45,10 @@ var directionalLight = new THREE.PointLight(0xffffff, 1, 500, 0.01);
 directionalLight.castShadow = true; // default false
 
 //Set up shadow properties for the light
-directionalLight.shadow.mapSize.width = 5120; // default 512
-directionalLight.shadow.mapSize.height = 5120; // default 512
-directionalLight.shadow.camera.near = 0; // default
-directionalLight.shadow.camera.far = 1000
+// directionalLight.shadow.mapSize.width = 5120; // default 512
+// directionalLight.shadow.mapSize.height = 5120; // default 512
+// directionalLight.shadow.camera.near = 0; // default
+// directionalLight.shadow.camera.far = 1000
 // default
 scene.add(directionalLight);
 
