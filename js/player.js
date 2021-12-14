@@ -30,6 +30,37 @@ class Player {
 
     update() {
 
+        if (this.direction == "up") {
+            this.pos.y++;
+        }
+        if (this.direction == "down") {
+            this.pos.y--;
+        }
+        if (this.direction == "left") {
+            this.pos.x--;
+        }
+        if (this.direction == "right") {
+            this.pos.x++;
+        }
+
+        if (this.pos.x > world.width / 2) {
+            this.pos.x = -world.width / 2;
+        }
+        if (this.pos.x < -world.width / 2) {
+            this.pos.x = world.width / 2;
+        }
+        if (this.pos.y > world.height / 2) {
+            this.pos.y = -world.height / 2;
+        }
+        if (this.pos.y < -world.height / 2) {
+            this.pos.y = world.height / 2;
+        }
+
+        this.head.position.x = this.pos.x;
+        this.head.position.y = this.pos.y;
+
+        this.pointLight.position.set(this.pos.x, this.pos.y, 3);
+
     }
 
 }

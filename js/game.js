@@ -121,6 +121,42 @@ function update() {
 
     controller.update();
 
+    if (controller.uparrow) {
+        if (player.direction == "down") {
+            player.direction = "down";
+        } else {
+            player.direction = "up";
+        }
+    }
+    if (controller.downarrow) {
+        if (player.direction == "up") {
+            player.direction = "up";
+        } else {
+            player.direction = "down";
+        }
+    }
+    if (controller.leftarrow) {
+        if (player.direction == "right") {
+            player.direction = "right";
+        } else {
+            player.direction = "left";
+        }
+    }
+    if (controller.rightarrow) {
+        if (player.direction == "left") {
+            player.direction = "left";
+        } else {
+            player.direction = "right";
+        }
+    }
+
+    if (clock.getElapsedTime() > 0.09) {
+        if (controller.keyCodes[32]) {
+        }
+        player.update();
+        clock.start();
+    }
+
 }
 ////    ////    ////
 ///    ////    ////
