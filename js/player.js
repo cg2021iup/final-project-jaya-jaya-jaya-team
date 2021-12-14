@@ -22,6 +22,9 @@ class Player {
 
         this.snakeLen = 5;
 
+        this.score=0;
+        // var gameScoreBoard = doc.getElementById('gamescore');
+
         this.invulnerable = false;
         this.recharge = 0;
 
@@ -39,8 +42,11 @@ class Player {
         this.pointLight = new THREE.PointLight(0x00ff00, 1, 20);
         scene.add(this.pointLight);
 
+        var x = document.getElementById("main");
 
     }
+
+    
 
     update() {
 
@@ -50,7 +56,7 @@ class Player {
             this.pointLight.color.setHex(0x0000ff);
             this.head.material.color.setHex(0x0000ff);
 
-            if (this.recharge >= 15) {
+            if (this.recharge >= 60) {
                 this.invulnerable = false;
             }
         } else {
@@ -79,17 +85,42 @@ class Player {
             this.pos.x++;
         }
 
+
         if (this.pos.x > world.width / 2) {
             this.pos.x = -world.width / 2;
         }
-        if (this.pos.x < -world.width / 2) {
-            this.pos.x = world.width / 2;
+        if ((this.pos.x > (world.width-2) / 2)&&this.invulnerable == false) {
+            location.reload();
+            window.location.href = "index.html";
         }
-        if (this.pos.y > world.height / 2) {
-            this.pos.y = -world.height / 2;
+        if ((this.pos.x < (-world.width+2) / 2)&&this.invulnerable == false) {
+            console.log("dead");
+            location.reload();
+           window.location.href = "index.html";
         }
-        if (this.pos.y < -world.height / 2) {
-            this.pos.y = world.height / 2;
+        if ((this.pos.y > (world.height-2) / 2)&&this.invulnerable == false) {
+            console.log("dead");
+            location.reload();
+            window.location.href = "index.html";
+        }
+        if ((this.pos.y < (-world.height+2) / 2)&&this.invulnerable == false) {
+            console.log("dead");
+            location.reload();
+            window.location.href = "index.html";
+        }
+        if (this.invulnerable==true){
+            if (this.pos.x > world.width / 2) {
+                this.pos.x = -world.width / 2;
+            }
+            if (this.pos.x < -world.width / 2) {
+                this.pos.x = world.width / 2;
+            }
+            if (this.pos.y > world.height / 2) {
+                this.pos.y = -world.height / 2;
+            }
+            if (this.pos.y < -world.height / 2) {
+                this.pos.y = world.height / 2;
+            }
         }
 
         for (let i = 0; i <= this.tail.length - 1; i++) {
@@ -100,13 +131,56 @@ class Player {
                 }
             }
 
+            // if (this.pos.x == world.width || this.pos.y == world.height){
+            //     console.log("dead");
+            //     location.reload();
+            // }
+
             if (food.position.x == this.pos.x && food.position.y == this.pos.y) {
 
                 for (let i = 0; i <= 10; i++) {
                     this.grow();
                 }
 
+                // score+=5;
+                // document.getElementById('score').innerHTML = score;
+
+                // audioLoader.load( 'Sound_Effects/POL-cinematic-boom-01.wav', function( buffer ) {
+                //     sound.setBuffer( buffer );
+                //     sound.setLoop( true );
+                //     sound.setVolume( 0.5 );
+                //     sound.play();
+                // });
+                //soundeffect()
                 spawnfood();
+                //gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 2 ;
+                //soundeffect()
+            }
+
+            if (food2.position.x == this.pos.x && food2.position.y == this.pos.y) {
+
+                for (let i = 0; i <= 10; i++) {
+                    this.grow();
+                }
+                if (this.recharge >= 30) {
+                    this.invulnerable = true;
+                    this.recharge = 0;
+                    //console.log("shift");
+                }
+
+                // score+=5;
+                // document.getElementById('score').innerHTML = score;
+
+                // audioLoader.load( 'Sound_Effects/POL-cinematic-boom-01.wav', function( buffer ) {
+                //     sound.setBuffer( buffer );
+                //     sound.setLoop( true );
+                //     sound.setVolume( 0.5 );
+                //     sound.play();
+                // });
+                //soundeffect()
+                spawnfood2();
+                //gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 1 ;
+                //soundeffect()
             }
         }
 
@@ -143,4 +217,26 @@ class Player {
         scene.add(this.tail[this.tail.length - 1]);
     }
 
+    soundeffect(){
+        // var stream = "Sound_Effects/POL-cinematic-boom-01.wav";
+        // var audioLoader = new THREE.AudioLoader();
+        // var listener = new THREE.AudioListener();
+        // var audio = new THREE.Audio(listener);
+        // audioLoader.load(stream, function(buffer) {
+        //     audio.setBuffer(buffer);
+        //     audio.setLoop(true);
+        //     audio.play();
+        // });
+    }
+    
+    // 
+
 }
+
+// function setScore() {
+//     gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 1 ;
+// }
+  
+// function clearScore() {
+//     gameScoreBoard.innerHTML = '0';
+// }

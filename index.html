@@ -6,32 +6,119 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SNAKE TRIAL</title>
-
     <style>
-        body {
-            margin: 0%;
-            background-color: grey;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+      body {
+        background: #202028;
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 2em;
+        text-align: center;
+      }
+      canvas {
+        border: solid .2em #fff;
+        height: 90vh;
+      }
+      #main{
+        display: none;
+      }
+      #newGame, #creditBtn, #backBtn, #mscBtn{
+        text-align: center;
+        vertical-align: middle;
+        border: 2px solid orange;
+        border-radius: 7px;
+        background-color: #fd7200;
+        color: orangeRed;
+        font-size: 60px;
+        font-weight: bold;
+        font-family: "Courier New";
+        width: 10em;
+        margin: 30px auto;
+       
+      }
+      #theHead{
+        margin: auto;
+        color: orange;
+        font-size: 2em;
+        font-family: "Courier New";
+      }
+      #credits{
+        margin: auto;
+        color: orange;
+        font-size: 1em;
+        font-family: "Courier New";
+        display: none;
+        background-color: inherit;
+      }
+      #backBtn{
+        display: none;
+      }
+      #img {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -1;
+      }
     </style>
 
 </head>
 
 <body>
+    <div id="theHead">Snake Trials!</div>
+    <div id="newGame" href="play.html" onclick="runGame()" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'">New Game</div>
+    <div id="creditBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" onclick="showCredits()">Credits</div>
+    <div id="credits">Snake Game: By Jaya Jaya Jaya Team</div>
+    <div id="backBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" onclick="goBack()">Back</div>
+    <div id="mscBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" onclick="playMusic()">Play Music</div>
+    <div id="main">
+    <div id="score"></div>
+    <canvas id="mainmenu" width="240" height="400" />
+    </div>
+    <div id="img"><img src="Images/wp2409705.jpg" alt="Girl in a jacket" style="width:1600px;height:900px;"></div>
+    <script src="mainmenu.js"></script>
+    <script>
+    var runGame = function(){
+        // document.getElementById("newGame").style.display = "none";
+        // document.getElementById("theHead").style.display = "none";
+        
+        // document.getElementById("credits").style.display = "none";       
+        // document.getElementById("main").style.display = "block";
+        // document.getElementById("creditBtn").style.display = "none";
+        window.location.href = 'play.html';
+      };
+    var showCredits = function(){
+       document.getElementById("theHead").style.display = "none";
+       document.getElementById("creditBtn").style.display = "none";
+       document.getElementById("newGame").style.display = "none";
+       document.getElementById("credits").style.display = "block";
+       document.getElementById("backBtn").style.display = "block";
+       document.getElementById("mscBtn").style.display = "none";
+     };
+      
+    var goBack = function(){
+      document.getElementById("backBtn").style.display = "none";
+      document.getElementById("credits").style.display = "none";
+      document.getElementById("theHead").style.display = "block";
+      document.getElementById("newGame").style.display = "block";
+      document.getElementById("creditBtn").style.display = "block";
+      document.getElementById("mscBtn").style.display = "block";
+    };
+    var playMusic = function(){
+    //document.getElementById("mscBtn").style.display = "none";
+    /**
+    * AUDIO
+    */
+    // var stream = "BGM/js_sounds_snakebgm.mp3";
 
-    <script src="js/libraries/three/build/three.min.js"></script>
-
-    <script src="js/setup.js"></script>
-
-    <script src="js/controller.js"></script>
-    <script src="js/player.js"></script>
-
-    <script src="js/game.js"></script>
+    // var audioLoader = new THREE.AudioLoader();
+    // var listener = new THREE.AudioListener();
+    // var audio = new THREE.Audio(listener);
+    // audioLoader.load(stream, function(buffer) {
+    //     audio.setBuffer(buffer);
+    //     audio.setLoop(true);
+    //     audio.play();
+    //     });
+    };
+    </script>
 </body>
 
 </html>

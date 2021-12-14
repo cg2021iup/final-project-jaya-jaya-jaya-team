@@ -28,6 +28,8 @@
         scene.add(this.mouseSprite);
     }
 
+
+
     /**
      * @function - Controller update function, Called for each keyup and keydown
      */
@@ -58,6 +60,16 @@
         if (this.keyCodes[40] || this.keyCodes[83]) {
             this.downarrow = true;
         }
+
+        // if (this.keyCodes[27] || this.keyCodes[83]) {
+        //     if(gameActive == true) {
+        //         pauseGame();
+        //     }
+        //     else {
+        //         gameControl = startGame(x);
+        //     }
+        //     break;
+        // }
 
         let buffer = 10;
     }
@@ -142,6 +154,18 @@
 
 }
 
+function onDocumentKeyDown(event) {
+    // if (event.key == 'Escape'){
+    //         if(gameActive == true) {
+    //             pauseGame();
+    //         }
+    //         else {
+    //             gameControl = startGame(x);
+    //         }
+    //         break;
+    // }
+};
+
 onkeydown = onkeyup = function (e) {
     // @ts-ignore
     e = e || event; // to deal with IE
@@ -150,9 +174,40 @@ onkeydown = onkeyup = function (e) {
     controller.update();
 }
 
+document.addEventListener("touchstart", touchstart, false);
+
+function touchstart(event) {
+    console.log("touchstart   event : ", event);
+}
+
+
 function onMouseMove(event) {
     // calculate mouse position in normalized device coordinates
     // (-1 to +1) for both components
     controller.htmlmouse.setX((event.clientX / window.innerWidth) * 2 - 1);
     controller.htmlmouse.setY(-(event.clientY / window.innerHeight) * 2 + 1);
+}
+
+/* function to start the game */
+function startGame(x) {
+    // setting gameActive flag to true
+    gameActive = true;
+    document.getElementById("game-status").innerHTML = "<small>Game Started</small>";
+    document.getElementById("game-score").innerHTML = "";
+    return setInterval(draw, 1000 / x);
+}
+
+function pauseGame() {
+    // setting gameActive flag to false
+    clearInterval(gameControl);
+    gameActive = false;
+    document.getElementById("game-status").innerHTML = "<small>Game Paused</small>";
+}
+
+function endGame(x) {
+    // setting gameActive flag to false
+    clearInterval(gameControl);
+    gameActive = false;
+    document.getElementById("game-status").innerHTML = "<small>Game Over</small>";
+    document.getElementById("game-score").innerHTML = "<h1>Score: " + x + "</h1>";
 }
