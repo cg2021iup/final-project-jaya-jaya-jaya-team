@@ -22,9 +22,6 @@ class Player {
 
         this.snakeLen = 5;
 
-        this.score=0;
-        // var gameScoreBoard = doc.getElementById('gamescore');
-
         this.invulnerable = false;
         this.recharge = 0;
 
@@ -45,8 +42,6 @@ class Player {
         var x = document.getElementById("main");
 
     }
-
-    
 
     update() {
 
@@ -91,22 +86,22 @@ class Player {
         }
         if ((this.pos.x > (world.width-2) / 2)&&this.invulnerable == false) {
             location.reload();
-            window.location.href = "index.html";
+            window.location.href = "gameover.html";
         }
         if ((this.pos.x < (-world.width+2) / 2)&&this.invulnerable == false) {
             console.log("dead");
             location.reload();
-           window.location.href = "index.html";
+           window.location.href = "gameover.html";
         }
         if ((this.pos.y > (world.height-2) / 2)&&this.invulnerable == false) {
             console.log("dead");
             location.reload();
-            window.location.href = "index.html";
+            window.location.href = "gameover.html";
         }
         if ((this.pos.y < (-world.height+2) / 2)&&this.invulnerable == false) {
             console.log("dead");
             location.reload();
-            window.location.href = "index.html";
+            window.location.href = "gameover.html";
         }
         if (this.invulnerable==true){
             if (this.pos.x > world.width / 2) {
@@ -142,9 +137,6 @@ class Player {
                     this.grow();
                 }
 
-                // score+=5;
-                // document.getElementById('score').innerHTML = score;
-
                 // audioLoader.load( 'Sound_Effects/POL-cinematic-boom-01.wav', function( buffer ) {
                 //     sound.setBuffer( buffer );
                 //     sound.setLoop( true );
@@ -153,7 +145,6 @@ class Player {
                 // });
                 //soundeffect()
                 spawnfood();
-                //gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 2 ;
                 //soundeffect()
             }
 
@@ -168,9 +159,6 @@ class Player {
                     //console.log("shift");
                 }
 
-                // score+=5;
-                // document.getElementById('score').innerHTML = score;
-
                 // audioLoader.load( 'Sound_Effects/POL-cinematic-boom-01.wav', function( buffer ) {
                 //     sound.setBuffer( buffer );
                 //     sound.setLoop( true );
@@ -179,7 +167,6 @@ class Player {
                 // });
                 //soundeffect()
                 spawnfood2();
-                //gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 1 ;
                 //soundeffect()
             }
         }
@@ -218,25 +205,15 @@ class Player {
     }
 
     soundeffect(){
-        // var stream = "Sound_Effects/POL-cinematic-boom-01.wav";
-        // var audioLoader = new THREE.AudioLoader();
-        // var listener = new THREE.AudioListener();
-        // var audio = new THREE.Audio(listener);
-        // audioLoader.load(stream, function(buffer) {
-        //     audio.setBuffer(buffer);
-        //     audio.setLoop(true);
-        //     audio.play();
-        // });
+        var stream = "Sound_Effects/POL-cinematic-boom-01.wav";
+        var audioLoader = new THREE.AudioLoader();
+        var listener = new THREE.AudioListener();
+        var audio = new THREE.Audio(listener);
+        audioLoader.load(stream, function(buffer) {
+            audio.setBuffer(buffer);
+            audio.setLoop(true);
+            audio.play();
+        });
     }
-    
-    // 
 
 }
-
-// function setScore() {
-//     gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 1 ;
-// }
-  
-// function clearScore() {
-//     gameScoreBoard.innerHTML = '0';
-// }

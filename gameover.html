@@ -52,31 +52,36 @@
       #backBtn{
         display: none;
       }
+      
+      #img {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -1;
+      }
     </style>
 
 </head>
 
 <body>
-    <div id="theHead">Welcome to Snake Trials!</div>
-    <div id="newGame" href="play.html" onclick="runGame()" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'">New Game</div>
-    <div id="creditBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" onclick="showCredits()">Credits</div>
-    <div id="credits">Snake Game: By Jaya Jaya Jaya Team</div>
-    <div id="backBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" onclick="goBack()">Back</div>
+    <div id="theHead">Game Over!</div>
+    <div id="newGame" href="play.html" onclick="runGame()" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'">Play Again</div>
+    <div id="newGame" href="index.html" onclick="MainMenu()" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'">Back to Main Menu</div>
     <div id="main">
     <div id="score"></div>
     <canvas id="mainmenu" width="240" height="400" />
     </div>
+    <div id="img"><img src="Images/snake5.png" alt="Girl in a jacket" style="width:1600px;height:900px;"></div>
     <script src="mainmenu.js"></script>
     <script>
     var runGame = function(){
-        // document.getElementById("newGame").style.display = "none";
-        // document.getElementById("theHead").style.display = "none";
-        
-        // document.getElementById("credits").style.display = "none";       
-        // document.getElementById("main").style.display = "block";
-        // document.getElementById("creditBtn").style.display = "none";
         window.location.href = 'play.html';
       };
+
+    var MainMenu = function(){
+        window.location.href = 'index.html';
+      };
+
     var showCredits = function(){
        document.getElementById("theHead").style.display = "none";
        document.getElementById("creditBtn").style.display = "none";

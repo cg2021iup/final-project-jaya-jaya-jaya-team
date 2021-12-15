@@ -18,9 +18,6 @@ let wall ={
     height: 2
 }
 
-
-//document.getElementById('score').value = score;
-
 const texture = new THREE.TextureLoader().load( "Textures/Green_Field.jpg" );
 texture.wrapS = THREE.RepeatWrapping;
 texture.wrapT = THREE.RepeatWrapping;
@@ -219,8 +216,7 @@ function spawnfood() {
 
     foodLight.position.set(food.position.x, food.position.y, 3);
     //setScore();
-    //score+=5;
-    //document.getElementById('score').innerHTML = score;
+    //score += 10;
     // var stream = "Sound_Effects/POL-cinematic-boom-01.wav";
     // var audioLoader = new THREE.AudioLoader();
     // var listener = new THREE.AudioListener();
@@ -239,8 +235,7 @@ function spawnfood2() {
 
     foodLight2.position.set(food.position.x, food.position.y, 3);
     //setScore();
-    //score+=5;
-    //document.getElementById('score').innerHTML = score;
+    //score += 10;
     // var stream = "Sound_Effects/POL-cinematic-boom-01.wav";
     // var audioLoader = new THREE.AudioLoader();
     // var listener = new THREE.AudioListener();
@@ -253,13 +248,13 @@ function spawnfood2() {
 
 }
 
-// function setScore() {
-//     gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 1 ;
-// }
+function setScore() {
+    gameScoreBoard.innerHTML = Number(gameScoreBoard.innerText) + 1 ;
+}
   
-// function clearScore() {
-//     gameScoreBoard.innerHTML = '0';
-// }
+function clearScore() {
+    gameScoreBoard.innerHTML = '0';
+}
 
 
 let deltaTime;
@@ -348,6 +343,16 @@ function render() {
 ////    ////    ////
 ///    ////    ////
 //    ////    ////
+
+    var stream = "https://gitcdn.link/cdn/Alvancho88/CG_FP_Commit_5/master/js/sounds/snakebgm.mp3";
+      var audioLoader = new THREE.AudioLoader();
+      var listener = new THREE.AudioListener();
+      var audio = new THREE.Audio(listener);
+      audioLoader.load(stream, function(buffer) {
+            audio.setBuffer(buffer);
+            audio.setLoop(true);    
+            audio.play();
+        }); 
 
 setup();
 gameLoop();

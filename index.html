@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="js/libraries/three/build/three.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -102,22 +103,34 @@
       document.getElementById("creditBtn").style.display = "block";
       document.getElementById("mscBtn").style.display = "block";
     };
+    var count = 0;
     var playMusic = function(){
-    //document.getElementById("mscBtn").style.display = "none";
-    /**
-    * AUDIO
-    */
-    // var stream = "BGM/js_sounds_snakebgm.mp3";
-
-    // var audioLoader = new THREE.AudioLoader();
-    // var listener = new THREE.AudioListener();
-    // var audio = new THREE.Audio(listener);
-    // audioLoader.load(stream, function(buffer) {
-    //     audio.setBuffer(buffer);
-    //     audio.setLoop(true);
-    //     audio.play();
-    //     });
-    };
+      document.getElementById("mscBtn").style.display = "block";
+      /**
+      * AUDIO
+      */
+      count+=1;
+      var stream = "BGM/js_sounds_snakebgm.mp3";
+      var audioLoader = new THREE.AudioLoader();
+      var listener = new THREE.AudioListener();
+      var audio = new THREE.Audio(listener);
+      audioLoader.load(stream, function(buffer) {
+            audio.setBuffer(buffer);
+            audio.setLoop(true);    
+            audio.play();
+      }); 
+          // count++;
+          // if (count%2==0){
+          //     audio.stop();
+          // }
+          // if (count%2==1){
+          //   audioLoader.load(stream, function(buffer) {
+          //   audio.setBuffer(buffer);
+          //   audio.setLoop(true);    
+          //   audio.play();
+          //   });  
+          // }
+      };
     </script>
 </body>
 
