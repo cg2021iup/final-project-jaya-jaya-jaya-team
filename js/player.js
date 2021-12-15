@@ -123,6 +123,7 @@ class Player {
                 if (this.tail[i].position.x == this.pos.x && this.tail[i].position.y == this.pos.y) {
                     console.log("dead");
                     location.reload();
+                    window.location.href = "gameover.html";
                 }
             }
 
@@ -153,7 +154,7 @@ class Player {
                 for (let i = 0; i <= 10; i++) {
                     this.grow();
                 }
-                if (this.recharge >= 30) {
+                if (this.recharge >= 10) {
                     this.invulnerable = true;
                     this.recharge = 0;
                     //console.log("shift");
